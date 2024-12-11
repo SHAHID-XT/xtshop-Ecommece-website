@@ -1,0 +1,131 @@
+.orders-containers{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-product-container{
+    width: 100%;
+}
+.order-product{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.right-bar{
+    overflow: hidden;
+}
+
+.product-image-name{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin: 3px 0;
+}
+.product-name{
+    padding-left: 7px;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.order-pimage img{
+    mix-blend-mode:multiply;
+    width: 130px;
+
+}
+.order-feedback-track-btn{
+    display: flex;
+}
+.order-feedback-track-btn a{
+    width: 150px;
+    text-align: center;
+    padding: 6px 11px;
+    border:1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 3px 3px;
+    /* background: var(--color-primary); */
+    background-color: var(--color-breadcrumb-link);
+    color: var(--color-white);
+    cursor: pointer ;
+}
+
+.order-feedback-track-btn a:hover{
+    transform: scale(1.008);
+}
+.order-feedback-track-btn a:active{
+    transform: scale(1.02);
+
+}
+
+.order-no-info{
+    font-weight: 500;
+    font-size: 16px;
+}
+.order-bold{
+    font-size: 18px;
+    font-weight: 600;
+}
+.order-info{
+    font-size: 15px;
+    font-weight: 400;
+
+}
+.order-item-list{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 55px);
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 10px 20px;
+    background: var(--color-white);
+}
+.view-orderd{
+}
+
+.view-orderd a{
+text-decoration: none;
+padding: 6px 8px;
+border:1px solid rgba(0, 0, 0, 0.09);
+border-radius: 4px;
+font-size: 14px;
+font-weight: 500;
+text-decoration: none;
+margin: 3px 3px;
+background-color: var(--color-primary);
+background-color: var(--color-breadcrumb-link);
+
+color: var(--color-white);
+cursor: pointer ;
+}
+.view-orderd a:hover{
+    transform: scale(1.008);
+}
+.view-orderd a:active{
+    transform: scale(1.02);
+}
+@media screen and (max-width: 1127px) {
+    .order-item-list{
+
+        width: calc(100% - 20px);
+        padding: 14px 10px;
+        margin: 2.5px 0;
+    }
+    .order-pimage img{
+        mix-blend-mode:multiply;
+        width: 90px;
+    
+    }
+    .order-feedback-track-btn{
+        flex-direction: column;
+    }
+    .order-feedback-track-btn a{
+        width: calc(100% - 10px);
+        margin: 3px 0px;
+        padding: 4px 5px;
+
+    }
+}

@@ -1,0 +1,270 @@
+.sales-conatiner {
+  padding: 0px 30px;
+}
+
+.summary-report-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.report {
+  /* display: flex;
+    flex-wrap: wrap; */
+  width: calc(50% - 0px);
+}
+
+.report-report {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--color-white);
+  padding: 30px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  justify-content: space-between;
+}
+.report-icon span {
+  font-size: 45px;
+  margin-right: 25px;
+}
+
+.product-num-text span {
+  display: block;
+}
+
+.product-num-text span:first-child {
+  font-weight: 500;
+  font-size: 27px;
+}
+
+.product-num-text span:last-child {
+  padding: 2px 0 16px;
+  color: #404040;
+}
+.sales-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 2px;
+}
+.sale-filter .active {
+  background-color: #8231d326;
+}
+.sale-filter span {
+  padding: 4px 6px;
+  color: var(--color-primary);
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.sales-text {
+  font-size: 22px;
+  font-weight: 500;
+}
+.orders-lists {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  margin: 5px;
+  padding: 10px 30px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.order-item-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  /* background: rgba(0, 0, 0, 0.06); */
+  padding: 5px 0;
+  /* margin: 0 -10px; */
+}
+.order-item-header > * {
+  font-weight: 500;
+  width: 100%;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px 10px;
+  z-index: 10;
+}
+.order-item:last-child {
+  border: none !important;
+}
+
+.order-item > * {
+  width: 100%;
+  font-size: 14px;
+}
+
+.status {
+  text-align: right;
+}
+
+.status.vb {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.orders-views-container {
+  /* width: 100%; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: 10px;
+  background-color: var(--color-white);
+  padding: 20px 10px;
+  border-radius: 4px;
+}
+
+.mt {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.product-order {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 5px 0px;
+  width: max-content;
+}
+.product-order > * {
+  margin: 0px 5px;
+  width: 180px;
+  padding-right: 10px;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.checkboxx {
+  width: max-content;
+}
+.checkboxx input {
+  transform: scale(1.2);
+  outline: none;
+}
+
+.order_id {
+  padding-right: 20px;
+  margin: 0px 5px;
+}
+
+.order_id a {
+  text-decoration: none;
+}
+.custom-size {
+  width: 90px !important;
+}
+.myorder-header {
+  display: flex;
+  margin: 5px 0;
+  flex-wrap: wrap;
+}
+.myorder-header .label {
+  padding: 5px 12px 6px 11px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  min-width: 125px;
+  margin-bottom: 5px;
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.myorder-header .label.active {
+  border: 1.5px solid var(--color-primary);
+}
+.myorder-header .label span {
+  display: block;
+}
+.myorder-header .label span:first-child {
+  font-size: 20px;
+  font-weight: 450;
+}
+
+.download-btn {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-size: 19px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: 400;
+}
+
+.form-body-images img {
+  width: 60px;
+  cursor: pointer;
+  margin: 3px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.block {
+  display: block;
+}
+textarea {
+  padding: 10px 20px;
+  margin: 10px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+select {
+  padding: 10px 20px;
+  margin: 5px 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.create-new {
+  margin-bottom: 10px;
+  margin-top: -1px;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 1127px) {
+  .profilemargin {
+    padding: 30px 15px;
+  }
+  .orders-views-container {
+    justify-content: center;
+  }
+  .myorder-header .label {
+    width: 100%;
+  }
+  .sales-conatiner {
+    padding: 0px 0px;
+  }
+  .report {
+    width: 100%;
+  }
+  .date {
+    display: none !important;
+  }
+  .orders-lists {
+    padding: 10px;
+  }
+  .sales-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .sales-text {
+    padding-left: 5px;
+    margin-bottom: 10px;
+  }
+  .product-order {
+    width: 100%;
+  }
+  .product-order > * {
+    display: none;
+  }
+  .order_id {
+    display: block;
+    width: 100%;
+  }
+
+  .checkboxx {
+    display: block;
+  }
+  .buyer-name {
+    display: block;
+  }
+}

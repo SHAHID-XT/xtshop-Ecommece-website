@@ -1,0 +1,108 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} {{product.name}}
+{% endblock title%} {% block style %}
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'productdetail.css' %}" />
+
+{% endblock style %} {% block body %}
+<div class="product-filters">
+  <h3>Product</h3>
+  <div class="na">
+    <span class="material-symbols-outlined"> inventory </span>
+    <span></span>
+  </div>
+</div>
+
+<div class="product-details">
+  <div class="product-image-container">
+    <div class="main-image">
+      <img src="{{product.image.url}}" alt="product-image" />
+    </div>
+
+    <div class="other-images">
+      <img
+        src="{{product.image.url}}"
+        alt="product-image"
+        class="activeimage"
+      />
+
+      {% if product.image2%}
+      <img src="{{product.image2.url}}" alt="product-image" />
+
+      {% endif %} {% if product.image3%}
+      <img src="{{product.image3.url}}" alt="product-image" />
+
+      {% endif %} {% if product.image4%}
+      <img src="{{product.image4.url}}" alt="product-image" />
+
+      {% endif %} {% if product.image5%}
+      <img src="{{product.image5.url}}" alt="product-image" />
+
+      {% endif %} {% if product.image6%}
+      <img src="{{product.image6.url}}" alt="product-image" />
+
+      {% endif %}
+    </div>
+  </div>
+  <div class="product-information-container">
+    <h1 class="product-header-title">{{product.name}}</h1>
+    <div class="prrcontainer pflex-row">
+      <div class="prs">
+        <span class="fa fa-star {% if product.average_product_rating >= 1 %} full-star {% endif %}"></span>
+        <span class="fa fa-star {% if product.average_product_rating >= 2 %} full-star {% endif %}"></span>
+        <span class="fa fa-star {% if product.average_product_rating >= 3 %} full-star {% endif %}"></span>
+        <span class="fa fa-star {% if product.average_product_rating >= 4 %} full-star {% endif %}"></span>
+        <span class="fa fa-star {% if product.average_product_rating >= 5 %} full-star {% endif %}"></span>
+      </div>
+      <div class="prtext">{{product.average_product_rating}}</div>
+      <div class="prcount">{{product.get_all_ratings | length}} Reviews</div>
+    </div>
+    <div class="product-brand pflex-row"><span>Brand :</span> <span>{{product.brand}}</span></div>
+    <div class="product-mrp-product">{{product.mrp}}</div>
+
+    <div class="product-price-container pflex-row">
+      <div class="pprice">{{ruppes}}{{product.price}}</div>
+      <div class="pdiscount">
+        {{product.calculate_discount_percent}}% off
+      </div>
+    </div>
+    <div class="product-discription">{{product.description}}</div>
+    <div class="product-avaiblity-container ">
+      <span>Available: </span>
+      <span>In Stock</span>
+    </div>
+    <div class="product-shipping-container">
+      <span>Shipping:</span>
+      <span>Free</span>
+    </div>
+    <div class="product-buy-cart-container pflex-row">
+      <a href="/checkout/{{product.id}}/">
+        <button class="buy-btnn">Buy Now</button>
+      </a>
+      <button class="cart-btnn" data-item="{{product.id}}"> Add To Cart</button>
+      <button ><span class="material-symbols-outlined">
+        favorite
+        </span></button>
+      <button><span class="material-symbols-outlined">
+        share
+        </span></button>
+    </div>
+    <div class="product-category-tags-container" style="display: None;">
+      <div class="product-category">
+        <span>Category: </span>
+        <span>{{product.category.name}}</span>
+      </div>
+      {% if product.tags %}
+      <div class="product-tags">
+        <span>Tags: </span>
+        <span>{{product.tags}}</span>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock body %} {% block script %}
+<script src="{% static 'product.details.js' %}"></script>
+{% endblock script %}

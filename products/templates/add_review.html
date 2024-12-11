@@ -1,0 +1,128 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} Order {% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'cart.css' %}" />
+<link rel="stylesheet" href="{% static 'orders.css' %}" />
+<link rel="stylesheet" href="{% static 'order.css' %}" />
+{% endblock style %} 
+
+{% block body %}
+
+
+
+<div class="product-filters">
+    <h3>Add Review</h3>
+    <div class="na">
+      <span class="material-symbols-outlined"> reviews </span>
+      <span></span>
+    </div>
+  </div>
+
+
+
+  <div class="orders-containers">
+
+    {% for orderitem in order.get_order_items %}
+        <div class="order-product-container seprated-bottom-line">
+            <div
+              class="order-product"
+              href="/product/{{orderitem.product.id}}/{{order_item.product.name}}"
+            >
+              <div class="product-image-name">
+                <div class="order-pimage">
+                  <a  href="/product/{{orderitem.product.id}}/{{orderitem.product.name}}">
+                  <img
+                    src="{{orderitem.product.image.url}}"
+                    alt=""
+      
+                  />
+                </a>
+      
+                </div>
+                <a class="product-name" href="/product/{{orderitem.product.id}}/{{orderitem.product.name}}">{{orderitem.product.name}} {% if order.is_more_than_one_items %}  <br> and {{order.is_more_than_one_items}} more items... {% endif %}</a>
+              </div>
+              <form method="POST">
+                <input type="text" hidden name="productid" id="productid" value="{{orderitem.product.id}}">
+                {% csrf_token %}
+
+              <div class="order-feedback-track-btn" style="display: flex; flex-direction:column;justify-content:left;">
+                {% if order.status == 'Delivered' %}
+                <div class="rate">
+                    <label for="star5" title="text">
+                      <input type="radio" id="star5" name="rate" value="5" />
+                      <span class="fa fa-star ">
+                      
+                    </span></label>
+                    <label for="star4" title="text">
+                      <input type="radio" id="star4" name="rate" value="4" />
+
+                      <span class="fa fa-star  "></span></label>
+                    <label for="star3" title="text">
+                      <input type="radio" id="star3" name="rate" value="3" />
+
+                      <span class="fa fa-star  ">
+                      
+                    </span></label>
+                    <label for="star2" title="text">
+                      <input type="radio" id="star2" name="rate" value="2" />
+
+                      <span class="fa fa-star  "></span></label>
+                    <label for="star1" title="text">
+                                          <input type="radio" id="star1" name="rate" value="1" />
+
+                      <span class="fa fa-star  "></span></label>
+                  </div>
+                  <div class="textarea">
+                    <textarea name="review" id="review" cols="30" rows="4" placeholder="Add Review"></textarea>
+
+                  </div>
+                  <div class="btn">
+                    <button>Submit</button>
+
+                  </div>
+                </form>
+
+
+                {% else %}
+                
+              {% endif %}
+              
+              </div>
+              
+           
+  
+  
+    {% endfor %}
+  </div>
+  
+
+  <script>
+    document.querySelectorAll("label[title='text']").forEach((
+      el)=>{
+        el.addEventListener("click",()=>{
+          console.log(el)
+          let parentEl = el.parentElement;
+          let inputInt =  parseInt(el.children[0].value)
+          console.log(parentEl,inputInt)
+          let elementToAdStar = parentEl.querySelectorAll("span")
+          for (let x = 5; x > inputInt; x--) {
+            console.log(elementToAdStar[0]);
+            elementToAdStar[0].classList.add("full-star");
+        }
+  
+        })
+      });
+  
+      
+  
+  </script>
+{% endblock body %}
+{% block script %}
+<script src="{% static 'product.details.js' %}"></script>
+<script src="{% static 'cart.js' %}"></script>
+
+{% endblock script %}
+
+

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+ {% load static %} 
+ {% block title %} Profile {% endblock title %} {% block style %}
+<link rel="stylesheet" href="{% static 'profile.css' %}" />
+
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'support.css' %}" />
+
+{% endblock style %} {% block body %}
+
+<div class="profile-conatiner">
+  <div><h3 class="headers-logo">Support</h3></div>
+
+  <div class="profilemargin">
+    <form class="profile-sign-up-form" method="post">
+      {% csrf_token %}
+      <div class="form-header">Submit your Ticket</div>
+
+      <div class="form-body">
+        <label for="subject">Subject</label>
+        <input
+          type="text"
+          name="subject"
+          id="subject"
+          placeholder=""
+        />
+      </div>
+
+      <div class="form-body">
+        <label for="priority">Priority</label>
+        <select name="priority" id="priority">
+            {% for p in PRIORITY_CHOICES %}
+            <option value="{{p}}">{{p}}</option>
+            {% endfor %}
+        </select>
+    
+      </div>
+
+      <div class="form-body">
+        <label for="text">Description</label>
+        <textarea name="text" id="text" cols="30" rows="7"></textarea>
+       
+      </div>
+      
+
+      <div class="form-body">
+        <input
+          type="submit"
+          name="submit"
+          id="submit"
+          value="Submit"
+          class="submitbtn"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="divdonthave">
+    <a href="/support-ticket/" class="donthave"
+      > <p>Go back to <a href="/support-ticket/">Support Ticket</a>.</p>
+    </a>
+  </div>
+</div>
+{% endblock body %}

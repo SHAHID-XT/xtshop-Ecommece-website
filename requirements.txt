@@ -1,0 +1,14 @@
+jsonfield
+django
+whitenoise
+forex-python
+django_user_agents
+pandas
+kaleido
+django-admin-interface
+django-simple-history
+xhtml2pdf
+werkzeug
+django-extensions
+pyOpenSSL
+waitress

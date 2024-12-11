@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+ {% load static %} 
+ {% block title %} Sales {% endblock title %} {% block style %}
+<link rel="stylesheet" href="{% static 'profile.css' %}" />
+
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'sales.css' %}" />
+
+{% endblock style %} {% block body %}
+
+<div class="product-filters">
+    <h3>Stats</h3>
+    <div class="na">
+      <span class="material-symbols-outlined"> monitoring </span>
+      <span></span>
+    </div>
+  </div>
+<div class="sales-conatiner">
+    <div class="sales-info">
+        <div class="sales-text">Filter</div>
+        <div class="sale-filter">
+            <span class="{% if filter_date == 'Today' %} active {% endif %}">Today</span>
+            <span class="{% if filter_date == 'Week' %} active {% endif %}">Week</span>
+            <span class="{% if filter_date == 'Month' %} active {% endif %}">Month</span>
+            <span class="{% if filter_date == 'Year' %} active {% endif %}">Year</span>
+
+        </div>
+    </div>
+    <div class="summary-report-container">
+        <div class="report">
+        <div class="report-report">
+            <div class="product-num-text">
+                <span>{{total_products_all_time}}</span>
+                <span>Total Products </span>
+            </div>
+            <div class="report-icon">
+                <span class="material-symbols-outlined">
+                    monitoring
+                </span>
+            </div>
+        </div>
+            
+        </div>
+
+
+        <div class="report">
+            <div class="report-report">
+            <div class="product-num-text">
+                <span>{{total_orders_all_time}}</span>
+                <span>Total Orders </span>
+            </div>
+            <div class="report-icon">
+                <span class="material-symbols-outlined">
+                    orders
+                    </span>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="report">
+            <div class="report-report">
+            <div class="product-num-text">
+                <span>{{ruppes}}{{total_sale_price_all_time}}</span>
+                <span>Total Sales </span>
+            </div>
+            <div class="report-icon">
+                <span class="material-symbols-outlined">
+                    payments
+                    </span>
+            </div>
+        </div>
+        </div>
+
+        <div class="report">
+            <div class="report-report">
+            <div class="product-num-text">
+                <span >{{all_time_customers}}</span>
+                <span>Customers </span>
+            </div>
+            <div class="report-icon">
+                <span class="material-symbols-outlined">
+                    person
+                    </span>
+            </div>
+        </div>
+        </div>
+
+        
+    </div>
+
+    {% if all_time_order %}
+    <div class="orders-lists">
+        <div class="order-item-header">
+            <div class="name">Name</div>
+            <div class="price">Price</div>
+            <div class="date">Date</div>
+            <div class="status">Status</div>
+        </div>
+        {% for order in all_time_order %}
+        <div class="order-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
+            <div class="name">{{order.user.address.full_name}}</div>
+            <div class="price">{{ruppes}}{{order.total_price}}</div>
+            <div class="date">{{order.created_at |date:"d F Y" }}</div>
+            <div class="status vb" data-order-id="{{order.order_id}}"> <a href="/order-info/?id={{order.id}}&orderid={{order.order_id}}">{{order.status}}</a></div>
+        </div>
+
+        {% endfor %}
+        {% if more_than_10_customer %}
+        <div class="order-item" style="color: var(--color-primary); font-weight: 500;">
+            {{more_than_10_customer}} more Orders...
+        </div>
+        {%endif %}
+    </div>
+
+    {% else %}
+    
+    {% endif %}
+</div>
+
+{% endblock body %}

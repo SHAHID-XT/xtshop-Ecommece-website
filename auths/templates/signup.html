@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'alogin.css' %}" /> {% endblock style %}
+{% block title %} Register {% endblock title %} {% block body %}
+
+<div class="login-conatiner">
+  <div><h3 class="headers-logo">{{website_name}}</h3></div>
+
+  <div class="loginmargin">
+    <form class="login-sign-up-form" method="post">
+      {% csrf_token %}
+
+      <div class="form-header">Register </div>
+
+      <div class="form-body">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Your Name" />
+      </div>
+
+      <div class="form-body">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="eg: johnsina"
+        />
+      </div>
+      <div class="form-body">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="example@example.com" />
+      </div>
+      <div class="form-body">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="**********"
+        />
+      </div>
+      <div class="form-body">
+        <label for="cpassword">Confirm Password</label>
+        <input
+          type="password"
+          name="cpassword"
+          id="cpassword"
+          placeholder="**********"
+        />
+      </div>
+      <div class="form-body with-checkbox">
+        <div class="checkboxdiv">
+          <input class="checkbox" type="checkbox" id="checkbox" name="checkbox"  checked/>
+        </div>
+        <label for="checkbox">
+          <span class="checkbox-text"
+            >Creating an account means you’re okay with our
+            <a href="/terms-and-conditions/" class="color-primary">Terms of Service</a> and
+            <a href="/about-us/" class="color-primary">Privacy Policy</a> my
+            preference</span
+          >
+        </label>
+      </div>
+
+      <div class="form-body">
+        <input
+          type="submit"
+          name="submit"
+          id="submit"
+          value="Submit"
+          class="submitbtn"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="divdonthave">
+    <a href="/signup" class="donthave"
+      >Already have account? <a href="/login">Login</a>
+    </a>
+  </div>
+</div>
+
+{% endblock body %}

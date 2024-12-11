@@ -1,0 +1,106 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} Order {% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'cart.css' %}" />
+<link rel="stylesheet" href="{% static 'orders.css' %}" />
+<link rel="stylesheet" href="{% static 'order.css' %}" />
+
+{% endblock style %} 
+
+{% block body %}
+<div class="product-filters">
+  <h3>Order Details </h3>
+  <div class="na">
+    <span class="material-symbols-outlined"> orders </span>
+    <span></span>
+  </div>
+</div>
+
+
+<div class="orders-containers">
+   <div class="order-deatils-header">
+    <div class="top-text">   </div>
+    <div class="order_information">
+      <div class="col">
+        <span>Ordered on {{ order.created_at |date:"d F Y" }}</span>
+        <span>Order# {{order.order_id}}</span>
+      </div>
+      <div class="col">
+        Invoice
+      </div>
+    </div>
+   </div>
+
+
+   <div class="shipping_container">
+    <div class="address">
+      <h4>Shipping Address</h4>
+      <p>{{order.address.full_name}}</p>
+      <p>{{order.address.line1}}</p>
+      <p>{{order.address.line2}}</p>
+      <p>{{order.address.landmark}}</p>
+      <p>{{order.address.city}}, {{order.address.state}} - {{order.address.pincode}} </p>
+      <p>{{order.address.country}}</p>
+
+    </div>
+    <div class="ordrer-summary">
+      <h4>Order Summary</h4>
+      <p><span>Item(s) Subtotal:</span> <span>{{ruppes}}{{order.total_price}}</span></p>
+      <p><span>Shipping: </span> <span> {{ruppes}}0</span></p>
+      <p><span>Total : </span> <span>{{ruppes}}{{order.total_price}}</span></p>
+      <p><span>Promotion Applied: </span> <span>{{ruppes}}0</span></p>
+      <p class="grandtotal"><span>Grand Total:</span> <span>{{ruppes}}{{order.total_price}}</span></p>
+    </div>
+   </div>
+
+   <div class="order-wrapper-container">
+
+
+    {% for item in order.get_order_items %}
+    <div class="order-product-container">
+      <div
+        class="order-product"
+        href="/product/{{item.product.id}}/{{item.product.name}}"
+      >
+        <div class="product-image-name">
+          <div class="order-pimage">
+            <a  href="/product/{{item.product.id}}/{{item.product.name}}">
+            <img
+              src="{{item.product.image.url}}"
+              alt=""
+
+            />
+          </a>
+
+          </div>
+          <a class="product-name" href="/product/{{item.product.id}}/{{item.product.name}}">{{item.product.name}} 
+            <div class="sold-by"><span>Sort by: </span><span>{{item.product.get_seller_name | upper}}</span></div>
+            <div class="product-price-a">
+              {{ruppes}}<span>{{item.product.price}}</span>
+            </div>
+            <div class="new">
+              Quantity: <span>{{item.quantity}}</span>
+            </div>
+            <div class="new">New</div>
+
+          </a>
+          
+        </div>
+        
+        </div>
+        
+      </div>
+
+      {% endfor %}
+    </div>
+
+
+</div>
+{% endblock body %}
+{% block script %}
+<script src="{% static 'product.details.js' %}"></script>
+<script src="{% static 'cart.js' %}"></script>
+
+{% endblock script %}

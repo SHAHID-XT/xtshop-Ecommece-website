@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+ {% load static %} 
+ {% block title %} Profile {% endblock title %} {% block style %}
+<link rel="stylesheet" href="{% static 'profile.css' %}" />
+
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+{% endblock style %} {% block body %}
+
+<div class="profile-conatiner">
+  <div><h3 class="headers-logo">Edit your address</h3></div>
+
+  <div class="profilemargin">
+    <form class="profile-sign-up-form" method="post">
+      {% csrf_token %}
+      <div class="form-header">Address </div>
+
+      <div class="form-body">
+        <label for="name">Full name (First and Last name) </label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          value="{{address.full_name}}"
+          placeholder="eg: John Walker..."
+        />
+      </div>
+
+      <div class="form-body">
+        <label for="mobile">Mobile number</label>
+        <input
+          type="number"
+          name="mobile"
+          id="mobile"
+          value="{{address.mobile_number }}"
+          placeholder="May be used to assist delivery"
+        />
+      </div>
+
+
+      <div class="form-body">
+        <label for="pincode">Pincode</label>
+        <input
+          type="number"
+          name="pincode"
+          id="pincode"
+          value="{{address.pincode}}"
+          placeholder="eg: 300023"
+        />
+      </div>
+
+      <div class="form-body">
+        <label for="line1">Flat, House no., Building, Company, Apartment</label>
+        <input
+          type="text"
+          name="line1"
+          id="line1"
+          value="{{address.line1}}"
+          placeholder=""
+        />
+      </div>
+
+      <div class="form-body">
+        <label for="line2">Area, Street, Sector, Village</label>
+        <input
+          type="text"
+          name="line2"
+          id="line2"
+          value="{{address.line2}}"
+          placeholder=""
+        />
+      </div>
+
+      <div class="form-body">
+        <label for="landmark">Landmark</label>
+        <input
+          type="text"
+          name="landmark"
+          id="landmark"
+          value="{{address.landmark}}"
+          placeholder=""
+        />
+      </div>
+      <div class="form-body">
+        <label for="city">City</label>
+        <input
+          type="text"
+          name="city"
+          id="city"
+          value="{{address.city}}"
+          placeholder=""
+        />
+      </div>
+      <div class="form-body">
+        <label for="state">State</label>
+        <input
+          type="text"
+          name="state"
+          id="state"
+          value="{{address.state}}"
+          placeholder=""
+        />
+      </div>
+      <div class="form-body">
+        <label for="country">Country</label>
+        <input
+          type="text"
+          name="country"
+          id="country"
+          value="India"
+          placeholder="we ship in india only..."
+          disabled
+        />
+      </div>
+
+      <div class="form-body">
+        <input
+          type="submit"
+          name="submit"
+          id="submit"
+          value="Save Changes"
+          class="submitbtn"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="divdonthave">
+    <a href="/" class="donthave"
+      >Back to <a href="/">Home</a>
+    </a>
+  </div>
+  
+</div>
+{% endblock body %}

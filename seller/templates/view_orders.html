@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+ {% load static %} 
+ {% block title %} Sales {% endblock title %} {% block style %}
+<link rel="stylesheet" href="{% static 'profile.css' %}" />
+
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'sales.css' %}" />
+
+{% endblock style %} {% block body %}
+
+<div class="product-filters">
+    <h3>My Order</h3>
+    <div class="na">
+      <span class="material-symbols-outlined"> monitoring </span>
+      <span></span>
+    </div>
+  </div>
+<div class="sales-conatiner">
+    <div class="myorder-header">
+        <div class="label {% if order_status == 'Pending Labels' %} active {% endif %}" data-status="Pending Labels">
+            <span>{{order_status_counts_info.pendinglabels}}</span>
+            <span>Pending Labels</span>
+        </div>
+        <div class="label {% if order_status == 'Pending' %} active {% endif %}" data-status="Pending">
+            <span>{{order_status_counts_info.pending}}</span>
+            <span>Pending</span>
+        </div>
+        <div class="label {% if order_status == 'Processing' %} active {% endif %}" data-status="Processing">
+            <span>{{order_status_counts_info.processing}}</span>
+            <span>Processing</span>
+        </div>
+        <div class="label {% if order_status == 'Delivered' %} active {% endif %}" data-status="Delivered">
+            <span>{{order_status_counts_info.delivered}}</span>
+            <span>Delivered</span>
+        </div>
+        <div class="label {% if order_status == 'Cancelled' %} active {% endif %}" data-status="Cancelled">
+            <span>{{order_status_counts_info.cancelled}}</span>
+            <span>Cancelled</span>
+        </div>
+        
+    </div>
+    
+    <!-- <div class="sales-info">
+        
+        <div class="sales-text"><form class="down-label-form">
+            <button type="submit" class="download-btn">Download Label</button>
+        </form></div>
+        <div class="sale-filter">
+
+        </div>
+    </div> -->
+    <div class="orders-views-container">
+        <div class="product-order mt">
+            <!-- <div class="checkboxx"  id="checkedall"> <input type="checkbox" ></div> -->
+            <div class="order_id">Order Id</div>
+            <div class="product-data">Product Information</div>
+            <div class="product-quantity custom-size">Quantity</div>
+            <div class="buyer-name">Buyer Details</div>
+            <div class="order-ammount custom-size">Amount</div>
+            <div class="order-date"> Time Elapsed</div>
+        </div>
+        {% for order in orders %}
+
+        <div class="product-order">
+            <!-- <div class="checkboxx" data-order-id="{{order.order_id}}"> <input type="checkbox"></div> -->
+            <div class="order_id"> <a href="/order-info/?id={{order.id}}&orderid={{order.order_id}}">{{order.order_id}}</a></div>
+            <div class="product-data">{{ order.get_first_order.product.name|slice:":20" }}{% if order.get_first_order.product.name|length > 20 %}...{% endif %} </div>
+            <div class="product-quantity custom-size">{{order.get_total_quantity}}</div>
+            <div class="buyer-name">{{order.user.address.full_name}}</div>
+            <div class="order-ammount custom-size">{{ruppes}}{{order.total_price}}</div>
+            <div class="order-date"> {{order.time_elapsed}}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="gotnextpage products-container">
+        <div class="pagination">
+          <span class="step-links">
+              {% if page_obj.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+      
+              <span class="current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+      
+              {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">next</a>
+                  <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+          </span>
+      </div>
+      </div> 
+</div>
+
+{% endblock body %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} Support {% endblock title %} 
+{% block style %}
+<link rel="stylesheet" href="{% static 'profile.css' %}" />
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'support.css' %}" />
+<style>
+
+</style>
+{% endblock style %} 
+{% block body %}
+<div class="product-filters">
+  <h3>Tickets</h3>
+  <div class="na">
+    <span class="material-symbols-outlined"> confirmation_number </span>
+    <span></span>
+  </div>
+</div>
+
+<div class="support-conatiner-main">
+  <div class="support-header">
+    <div class="first">All Support Ticket</div>
+    <a href="/new-ticket/">+ Add Ticket</a>
+  </div>
+
+  <div class="ticket-conatiners">
+
+    {% for ticket in tickets %}
+    <a class="ticket" href="/support-ticket/{{ticket.reference_id}}">
+      <div class="ref"> 
+        <div class="no">Reference ID: {{ticket.reference_id}}</div> 
+        <div class="stat {{ticket.status}}">{{ticket.status}}</div>
+      </div>
+      <h4>{{ticket.title}}</h4>
+      <div class="created">Creation Date: {{ticket.created_at |date:"d F Y"}}</div>
+    </a>
+
+    {% endfor   %}
+
+  </div>
+</div>
+{% endblock body %}

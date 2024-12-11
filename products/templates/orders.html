@@ -1,0 +1,104 @@
+{% extends 'base.html' %} 
+{% load static %}
+ {% block title %} Order {% endblock title%} {% block style %}
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'cart.css' %}" />
+<link rel="stylesheet" href="{% static 'orders.css' %}" />
+
+{% endblock style %} {% block body %}
+<div class="product-filters">
+  <h3>orders</h3>
+  <div class="na">
+    <span class="material-symbols-outlined"> orders </span>
+    <span></span>
+  </div>
+</div>
+
+{% if not orders %}
+<div class="cart-container">
+  <div class="cart-empty-error">
+    <div class="cart-icon-center">
+      <span class="material-symbols-outlined"> orders </span>
+    </div>
+    <div class="cart-empty-help-text">No Orders yet</div>
+    <div class="additem-cart"> 
+      <a href="/">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+
+<div class="orders-containers">
+{% for order in orders %}
+
+  <div class="order-item-list">
+    <!-- <div class="order-item-header">
+      <div class="order-status-date">
+        <div class="placed-text">ORDER PLACED on {{ order.created_at|date:"d F Y" }}</div>
+      </div>
+      <div class="order-tprice">Total {{ruppes}}{{order.total_price}}</div>
+      
+    </div> -->
+
+    
+    <div class="order-status">
+      <div class="order-bold">{{order.status}} {{ order.created_at |date:"d F Y" }}</div>
+      <div class="order-info"> 
+        {% if order.status == 'Delivered' %}
+        {{order.order_info}}
+        {% else %}
+        Order in Progress
+        {% endif %}
+        </div>
+    </div>
+
+    <div class="order-product-container">
+      <div
+        class="order-product"
+        href="/product/{{order.get_first_order.product.id}}/{{order.get_first_order.product.name}}"
+      >
+        <div class="product-image-name">
+          <div class="order-pimage">
+            <a  href="/product/{{order.get_first_order.product.id}}/{{order.get_first_order.product.name}}">
+            <img
+              src="{{order.get_first_order.product.image.url}}"
+              alt=""
+
+            />
+          </a>
+
+          </div>
+          <a class="product-name" href="/product/{{order.get_first_order.product.id}}/{{order.get_first_order.product.name}}">{{order.get_first_order.product.name}} {% if order.is_more_than_one_items %}  <br> and {{order.is_more_than_one_items}} more items... {% endif %}</a>
+        </div>
+        <div class="order-feedback-track-btn">
+          {% if order.status == 'Delivered' %}
+          <a href="/create-review/?id={{order.id}}&orderid={{order.order_id}}">Write a product review</a>
+          <a >Leave seller feedback</a>
+          <a > Leave delivery feedback</a>
+          {% else %}
+          <div class="order-no-info">Note: Delivery is scheduled for {{ order.expected_deliver_date }} or earlier.</div>
+        {% endif %}
+        
+        </div>
+        
+      </div>
+        <div class="view-orderd">
+          <a href="/order?id={{order.id}}&orderid={{order.order_id}}&status={{order.status}}&usr={{order.user.username}}" class="order-details">
+              View order details
+          </a>
+        </div>
+    </div>
+
+
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endif %} {% endblock body %} {% block script %}
+<script src="{% static 'product.details.js' %}"></script>
+<script src="{% static 'cart.js' %}"></script>
+
+{% endblock script %}

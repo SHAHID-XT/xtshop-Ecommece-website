@@ -1,0 +1,209 @@
+.support-conatiner-main{
+    width:calc(100% - 60px);
+    padding: 20px;
+    margin: 10px;
+}
+.support-header{
+    display: flex;
+    width:calc(100% - 10px);
+    justify-content: space-between;
+    
+    margin: 0px 5px; 
+
+
+}
+
+.support-header .first{
+    font-weight: 600;
+}
+
+
+.ticket-conatiners{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.ticket{
+    color: inherit;
+    text-decoration: none;  
+    background: var(--color-white);
+    border-radius: 6px;
+    padding: 10px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    height: min-content;
+    margin: 1.5px;
+    max-width: 265px;
+
+}
+
+.ticket >*{
+    margin: 0;
+    padding: 0; 
+    font-size: 15px;
+    font-weight: 400;
+    margin: 1px 0px;
+
+}
+
+.ticket .ref{
+    color: #156bc0;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+.ticket .ref .stat.Open{
+    font-weight: 500;
+    background: #01b8A126;
+    color:#01b81a;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+.stat.In.Progress{
+color: #fa8b0c;
+font-weight: 500;
+background: #fa8b0c26;
+padding: 1px 4px;
+border-radius: 3px;
+}
+
+.stat{
+    height: min-content;
+}
+.stat.Resolved{
+    color: #34aebb;
+    font-weight: 500;
+    background: #34aebb26;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+.ticket h4{
+    font-weight: 500;
+    font-size: 15px;
+    margin: 2px 0px;
+}
+
+.priority span, .status span{
+    font-weight: 500!important;
+    font-size: 13px;
+    background: #01b8A126;
+    color:#01b81a;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+.ticket button{
+    border:none;
+    outline: none;
+    background: transparent;
+}
+
+.ticket{
+    width: 300px!important;
+}
+
+.ticket .created{
+    font-size: 15px;
+    color: #777777;
+}
+.dticket{
+    background-color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.create span:first-child, .st span:first-child, .overview p:first-child{
+color: #747474;
+font-size: 15px;
+}
+.create span:last-child{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.overview p{
+    margin: 3px 0;
+}
+.overview p:first-child{
+    margin-top: 10px;
+}
+.overview {
+    margin-bottom: 15px;
+}
+.ppp{
+    color: #747474;
+
+}
+.attach{
+    padding: 10px 0;
+    word-wrap: break-word;
+}
+.attach div{
+    display: block;
+    text-wrap: wrap!important;
+    overflow: hidden;
+    padding-bottom: 5px;
+    color: #404040;
+    font-weight: 500;
+    font-size: 15px;
+    
+
+}
+select{
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    display: block;
+    padding: 10px 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+textarea{
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    display: block;
+    padding: 10px 10px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+pre {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    /* white-space: normal; */
+    font-weight: 400;
+    word-wrap: normal;
+}
+@media screen and (max-width: 1127px) {
+
+    .support-conatiner-main{
+        width:100%;
+        padding: 0px;
+        margin: 0px;
+        margin-bottom: 10px;
+
+    }
+    .ticket-conatiners{
+        flex-direction: column;
+    }
+
+    .ticket{
+        max-width: 100%;
+        width: calc(100% - 35px)!important;
+    }
+
+}

@@ -1,0 +1,143 @@
+{% extends 'base.html' %} {% load static %} 
+{% block title %} Cart {% endblock title%} {% block style %}
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'cart.css' %}" />
+
+{% endblock style %} {% block body %}
+<div class="product-filters">
+  <h3>Cart</h3>
+  <div class="na">
+    <span class="material-symbols-outlined"> shopping_bag </span>
+    <span></span>
+  </div>
+</div>
+
+<div class="cart-container">
+  <div class="cart-header-container"></div>
+
+  <div class="cart-item-container">
+    
+    {% if cart.get_cart_items %}
+
+    <div class="cart-items">
+      
+      {% for cart_item in cart.get_cart_items %}
+      <div class="item-cart">
+        
+        <div class="cart-info">
+          <a
+            class="cart-left"
+            href="/product/{{cart_item.product.id}}/{{cart_item.product.name}}"
+          >
+            <img src="{{cart_item.product.image.url}}" alt="Product Image" />
+          </a>
+          <div class="cart-right">
+            <div class="cart-title">{{cart_item.product.name}}</div>
+            <div class="cart-price">
+              <span class="cart-price-price"
+                >{{ruppes}}{{cart_item.product.price}}
+              </span>
+              <span class="cart-mrp">
+                <span>M.R.P.: </span
+                ><span class="cart-mrpcut"
+                  >{{cart_item.product.mrp}}</span
+                ></span
+              >
+            </div>
+            <div class="cart-instock">Instock</div>
+            <div class="cart-delivery">
+              {% if cart_item.product.deliverycharges == "Free" %} Eligible for
+              FREE Shipping {% else %} <span>Shipping Charges :</span>
+              <span>{{cart_item.product.deliverycharges}}</span> {% endif%}
+            </div>
+
+            <div class="cart-soldby">
+              <span>Sold by</span> <span>{{website_name}}</span>
+            </div>
+            
+            <a class="cart-return-policy">7 days Service Centre Replacement</a>
+          </div>
+        </div>
+        <div class="cart-action-container">
+          <div class="cart-left" >
+            <span class="material-symbols-outlined remove" data-cartid="{{cart_item.id}}" > remove </span>
+            <span data-cartid="{{cart_item.id}}" class="quantity">{{cart_item.quantity}}</span>
+            <span class="material-symbols-outlined add" data-cartid="{{cart_item.id}}" > add </span>
+          </div>
+          <div class="cart-right" >
+            <button data-cartid="{{cart_item.id}}" class="cart-delete-icon delete" >
+              <span class="material-symbols-outlined"> delete </span>
+            </button>
+            {% comment %} <button data-cartid="{{cart_item.id}}" class="favorite">
+              <span class="material-symbols-outlined" > favorite </span>
+            </button> {% endcomment %}
+          </div>
+        </div>
+      </div>
+      
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="cart-empty-error">
+      <div class="cart-icon-center">
+        <span class="material-symbols-outlined">
+          shopping_cart_off
+          </span>
+      </div>
+      <div class="cart-empty-help-text">Your Cart is empty.</div>
+      <div class="additem-cart">
+        <a href="/">Add Product</a>
+      </div>
+    </div>
+    {% endif %}
+    {% if cart.get_cart_items %}
+    <div class="cart-checkout-container">
+      <div class="c-c-titl">Order Summary</div>
+
+      <div class="cart-price-info">
+        <div class="prices">
+          <div class="">Price ({{ total_qunatity }} Items)</div>
+          <div class="">{{ruppes}}{{total_price}}</div>
+        </div>
+        <div class="prices">
+          <div class="">Discount</div>
+          <div class="discount-price-underline">
+            - {{ruppes}}{{total_discount}}
+          </div>
+        </div>
+        <div class="prices">
+          <div class="">Delivery Charges</div>
+          <div class="deliverycharges-free">Free</div>
+        </div>
+      </div>
+
+      <div class="cart-total-price">
+        <span>Subtotal ({{ total_qunatity }} items)</span
+        ><span>{{ruppes}}{{total_price}}</span>
+      </div>
+      <div class="cart-save-info">
+        You will save {{ruppes}}{{total_discount}} on this order
+      </div>
+      <div class="cart-buy-btn">
+        <a href="/checkout">
+          <button>Procced to Buy ({{ total_qunatity }} items)</button>
+
+        </a>
+      </div>
+      <div class="addmoreinfo">
+        <a href="/" class="">Add more products</a>
+      </div>
+    </div>
+
+    {% endif %}
+
+
+
+
+  </div>
+</div>
+{% endblock body %} {% block script %}
+<script src="{% static 'product.details.js' %}"></script>
+<script src="{% static 'cart.js' %}"></script>
+
+{% endblock script %}

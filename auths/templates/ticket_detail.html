@@ -1,0 +1,57 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} Support {% endblock title %} 
+{% block style %}
+<link rel="stylesheet" href="{% static 'profile.css' %}" />
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+<link rel="stylesheet" href="{% static 'support.css' %}" />
+<style>
+
+</style>
+{% endblock style %} 
+{% block body %}
+<div class="product-filters">
+  <h3> Tickets Details</h3>
+  <div class="na">
+    <span class="material-symbols-outlined"> confirmation_number </span>
+    <span></span>
+  </div>
+</div>
+
+<div class="support-conatiner-main">
+    <div class="dticket">
+      <h4 class="name">{{ticket.title}}</h4>
+      <div class="update-create">
+        <div class="create"><span>Created Date: </span><span>{{ticket.created_at |date:"d F Y"}}</span></div>
+        <div class="create"><span>Updated Date:</span> <span>{{ticket.updated_at |date:"d F Y"}}</span></div>
+        <div class="st"><span>Status: </span><span>{{ticket.status}}</span></div>
+        
+        <div class="overview">
+          <p>Overview :</p>
+          <pre>{{ticket.description}}</pre>
+
+        </div>
+
+        {% if ticket.reply %}
+        <div class="overview">
+          <p> Support Reply :</p>
+          <p></p>
+
+          <pre>{{ticket.reply}}</pre>
+
+        </div>
+        {% endif %}
+        {% if ticket.get_attachments %}
+        <div class="ppp">File Attachment</div>
+
+        <div class="attach">
+          {% for attach in ticket.get_attachments %}
+            <div>{{attach}}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'alogin.css' %}" /> {% endblock style %}
+{% block title %} Login {% endblock title %} {% block body %}
+
+<div class="login-conatiner">
+  <div><h3 class="headers-logo">{{website_name}}</h3></div>
+
+  <div class="loginmargin">
+    <form class="login-sign-up-form" method="post">
+      {% csrf_token %}
+
+      <div class="form-header">Become a {{website_name}} Seller
+        and sell to 1 Crore+ customers<br> </div>
+
+      <div class="form-body">
+        <label for="sellername">Bussiness Name</label>
+        <input
+          type="text"
+          name="sellername"
+          id="sellername"
+          value="{{seller.name}}"
+          placeholder="Type your bussiness name..."
+        />
+      </div>
+
+      <div class="form-body">
+        <label for="gstin">GSTIN</label>
+        <input
+          type="gstin"
+          name="gstin"
+          id="gstin"
+          value="{{seller.gstin}}"
+          placeholder=""
+        />
+      </div>
+
+      <div class="form-body with-checkbox">
+        <div class="checkboxdiv">
+          <input
+            class="checkbox"
+            type="checkbox"
+            id="checkbox"
+            name="checkbox"
+            checked
+          />
+        </div>
+        <label for="checkbox">
+            <span class="checkbox-text"
+              >Creating an account means you’re okay with our
+              <a href="/terms-and-conditions/" class="color-primary">Terms of Service</a> and
+              <a href="/about-us/" class="color-primary">Privacy Policy</a> my
+              preference</span
+            >
+          </label>
+      </div>
+
+      <div class="form-body">
+        <input
+          type="submit"
+          name="submit"
+          id="submit"
+          value="Submit"
+          class="submitbtn"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="divdonthave">
+    <a href="/" class="donthave"
+      >Go Back to  <a href="/">Home</a>
+    </a>
+  </div>
+</div>
+
+{% endblock body %}

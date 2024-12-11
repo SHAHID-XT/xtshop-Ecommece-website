@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+ {% load static %} 
+ {% block title %} Profile {% endblock title %} {% block style %}
+<link rel="stylesheet" href="{% static 'profile.css' %}" />
+
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+{% endblock style %} {% block body %}
+<div class="product-filters">
+    <h3>Your Account
+    </h3>
+    <div class="na">
+      <span class="material-symbols-outlined"> person </span>
+      <span></span>
+    </div>
+  </div>
+
+<div class="profile-conatiner-main">
+    <a class="pcontainer-item-lists" href="/orders">
+        <div class="picon">
+            <span class="material-symbols-outlined"> orders </span>
+        </div>
+        <div class="s">
+            <h3>Your Orders </h3>
+            <p>Track, return, or buy things again
+                </p>
+        </div>
+        
+    </a>
+    <a class="pcontainer-item-lists" href="/personal-info">
+        <div class="picon">
+            <span class="material-symbols-outlined"> manage_accounts </span>
+        </div>
+        <div class="s">
+            <h3>Login & Security </h3>
+            <p>Edit login, username, password and email</p>
+        </div>
+        
+    </a>
+
+    <a class="pcontainer-item-lists" href="/address/">
+        <div class="picon">
+            <span class="material-symbols-outlined"> alternate_email </span>
+        </div>
+        <div class="s">
+            <h3>Your Addresses</h3>
+
+            <p>
+                Edit addresses for orders</p>
+        </div>
+       
+    </a>
+
+
+    
+    <a class="pcontainer-item-lists" href="/support-ticket/">
+        <div class="picon">
+            <span class="material-symbols-outlined"> contact_support </span>
+        </div>
+        <div class="s">
+            <h3>Contact us</h3>
+            <p> need help?
+        </p>
+        </div>
+       
+    </a>
+</div>
+{% endblock body %}

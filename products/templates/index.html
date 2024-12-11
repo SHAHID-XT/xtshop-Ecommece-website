@@ -1,0 +1,227 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title%} {% block style %}
+<link rel="stylesheet" href="{% static 'phome.css' %}" />
+{% endblock style %} {% block body %}
+<div class="product-filters">
+  <h3>Shop</h3>
+  <div class="na">
+    <span class="material-symbols-outlined"> home </span>
+    <span></span>
+  </div>
+</div>
+
+<div class="top-cwrap">
+  <div class="sss">
+    <div class="ftrtitle">
+      <span class="material-symbols-outlined"> tune </span>
+      <span>Filter</span>
+    </div>
+
+    <div class="ftrprice-range">
+      <div class="ftrp-title">Price Range</div>
+      <input
+        type="range"
+        name="pricerange"
+        id="pricerange"
+        min="0"
+        max= "50000"
+        value="{{maxprice}}"
+        class="ftr-category-item range"
+      />
+      <div class="ftrprice-text">
+        <span>₹0</span> - <span id="max-f-price">₹ {{maxprice}}</span>
+      </div>
+    </div>
+
+    <div class="ftr-category-sec">
+      <div class="ftr-category-title">Category</div>
+      
+      {% for cat in top_categories%}
+
+      <a class="ftr-category-item event pointer" data-href = "{{cat.category__name}}" data-value="category">
+        <div class="fff"><input type="checkbox" {% if category == cat.category__name %} checked {% endif %} />
+          <span>{{cat.category__name}}</span></div>
+        <span>{{cat.count}}</span></a
+      >
+      {% endfor %}
+      <!-- <a class="ftr-category-see-more ftr-category-item" href="#">See More</a> -->
+    </div>
+
+    <div class="ftr-category-sec">
+      <div class="ftr-category-title">Brand</div>
+      {% for br in top_brands %}
+      <a class="ftr-category-item event pointer" data-href = "{{br.brand}}" data-value="brand">
+        <div class="fff"><input type="checkbox" {% if brand == br.brand %} checked {% endif %} /><span>{{br.brand}}</span></div>
+        <span>{{br.count}}</span></a
+      >
+      {% endfor %}
+      
+      <!-- <a class="ftr-category-see-more ftr-category-item" href="#">See More</a> -->
+    </div>
+
+    <div class="ftr-category-sec">
+      <div class="ftr-category-title">Rating</div>
+      <a class="ftr-category-item event pointer"  data-value="rating" data-href="5" >
+        <div class="fff">
+          <input type="checkbox"  {% if rating == 5 or rating == "5" %} checked {% endif %} /><span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span>
+          </span>
+        </div>
+        <span></span></a
+      >
+      <a class="ftr-category-item event pointer" data-value="rating" data-href="4">
+        <div class="fff">
+          <input type="checkbox" {% if rating == 4 or rating == "4" %} checked {% endif %} /><span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star "></span>
+          </span>
+        </div>
+        <span></span></a
+      >
+      <a class="ftr-category-item event pointer"  data-value="rating" data-href="3">
+        <div class="fff">
+          <input type="checkbox"  {% if rating == 3 or rating == "3" %} checked {% endif %} /><span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star "></span
+            ><span class="fa fa-star "></span>
+          </span>
+        </div>
+        <span></span></a
+      >
+      <a class="ftr-category-item event pointer" data-value="rating" data-href="2">
+        <div class="fff">
+          <input type="checkbox" {% if rating == 2 or rating == "2" %} checked {% endif %} /><span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star "></span
+            ><span class="fa fa-star "></span
+            ><span class="fa fa-star "></span>
+          </span>
+        </div>
+        <span></span></a
+      >
+      <a class="ftr-category-item event pointer"  data-value="rating" data-href="1">
+        <div class="fff">
+          <input type="checkbox" {% if rating == 1 or rating == "1" %} checked {% endif %} /><span
+            ><span class="fa fa-star full-star"></span
+            ><span class="fa fa-star "></span
+            ><span class="fa fa-star "></span
+            ><span class="fa fa-star "></span
+            ><span class="fa fa-star "></span>
+          </span>
+        </div>
+        <span></span></a
+      >
+      
+    </div>
+  </div>
+  <div class="cont">
+    <div class="product-filter-views">
+      <div class="sort-by">
+        
+        <span>Sort By:</span>
+        <a class="pointer {% if sortby == 'Top' %} activecolor {% endif %}">Top</a>
+        <a class="pointer {% if sortby == 'Newest' %} activecolor {% endif %}">Newest</a>
+        <a class="pointer {% if sortby == 'Price' %} activecolor {% endif %}">Price</a>
+        <a class="pointer {% if sortby == 'Popular' %} activecolor {% endif %}">Popular</a>
+      </div>
+      <div class="list-grid" style="display: none;">
+        <a href="#"
+          ><span class="material-symbols-outlined"> view_list </span></a
+        >
+        <a href="#"> <span class="material-symbols-outlined"> list </span></a>
+      </div>
+    </div>
+
+    <div class="products-container">
+      {% for product in products %}
+      <div class="card">
+        <div class="product-item">
+          <a
+            class="product-img"
+            href="/product/{{product.id}}/{{product.name}}"
+          >
+            <img src="{{product.image.url}}" alt="Product-img" />
+          </a>
+          <div class="product-info">
+            <div class="product-item-body">
+              <div>
+                <a
+                  class="product-title"
+                  href="/product/{{product.id}}/{{product.name}}"
+                >
+                  <h3 class="product-title">{{product.name}}</h3></a
+                >
+              </div>
+              <div class="product-rating-container">
+                
+                <span class="fa fa-star {% if product.average_product_rating >= 1 %} full-star {% endif %}"></span>
+                <span class="fa fa-star {% if product.average_product_rating >= 2 %} full-star {% endif %}"></span>
+                <span class="fa fa-star  {% if product.average_product_rating >= 3 %} full-star {% endif %}"></span>
+                <span class="fa fa-star {% if product.average_product_rating >= 4 %} full-star {% endif %}"></span>
+                <span class="fa fa-star  {% if product.average_product_rating >= 5 %} full-star {% endif %}"></span>
+                <span class="stars-rating-point">{{product.average_product_rating}}</span>
+                <span class="stars-rating-review">
+                  <span>{{product.get_all_ratings | length}}</span> Reviews</span
+                >
+              </div>
+            </div>
+            <div class="product-item-footer">
+              <div class="product-item-price-sec">
+                <span class="product-price">{{ruppes}}{{product.price}}</span>
+                <span class="product-mrp-price">{{product.mrp}}</span>
+                <span class="product-discount"
+                  >{{product.calculate_discount_percent}}% Off</span
+                >
+              </div>
+            </div>
+            <div class="product-item-buttons">
+              <button class="product-cart-btn" data-item="{{product.id}}">
+                <span class="material-symbols-outlined">
+                  add_shopping_cart
+                </span>
+                <p>Add To Cart</p>
+              </button>
+              <a href="/checkout/{{product.id}}/">
+              <button class="product-buy-btn" data-item="{{product.id}}">buy now</button>
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="gotnextpage products-container">
+      <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    </div> 
+  </div>
+</div>
+
+{% endblock body %} {% block script %}
+<script src="{% static 'phome.js' %}"></script>
+{% endblock script %}

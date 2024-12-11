@@ -1,0 +1,60 @@
+* {
+  font-family: "Jost", sans-serif;
+}
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 70px;
+  margin-top: 20px;
+}
+.error-title {
+  color: #a0a0a0;
+  font-size: 4rem;
+  font-size: 600;
+  text-align: center;
+}
+
+svg {
+  width: 100%;
+}
+.error-page > h5 {
+  font-weight: 500;
+  font-size: 18px;
+  padding: 20px 0;
+  margin: 0;
+  max-width: 100%;
+}
+
+.content-center {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.content-center a {
+  background-color: var(--color-primary);
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  text-align: inherit;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 34px;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--color-white);
+  text-transform: capitalize;
+  border-radius: 6px;
+  padding: 12px 30px;
+  font-weight: 500;
+
+  text-wrap: nowrap;
+}

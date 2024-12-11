@@ -1,0 +1,34 @@
+.about-containers {
+  padding: 20px;
+  width: calc(100% - 40px);
+}
+
+.about {
+  width: calc(100% - 40px);
+
+  padding: 20px;
+  background: var(--color-white);
+  border-radius: 4px;
+}
+
+.about p{
+    font-size: 18px;
+}
+
+.about h4{
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+@media screen and (max-width: 1127px) {
+  .about-containers {
+    padding: 5px;
+    width: calc(100% - 5px);
+  }
+
+  .about {
+    width: calc(100% - 20px);
+
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+}
