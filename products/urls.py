@@ -8,7 +8,6 @@ urlpatterns = [
     path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('remove-from-cart-qty/<int:cart_item_id>/', remove_from_cart_by_qty, name='remove_from_cart_qty'),
     path('add-from-cart-qty/<int:cart_item_id>/', add_from_cart_by_qty, name='add_from_cart_qty'),
-
     path('delete-from-cart/<int:cart_item_id>/', delete_product_from_cart, name='delete_from_cart'),
     path('orders/', order_view, name='order_view'),
     path('psucess/', paypal_payment_return, name='psucess'),
